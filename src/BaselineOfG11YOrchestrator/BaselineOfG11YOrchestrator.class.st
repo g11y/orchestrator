@@ -44,8 +44,8 @@ BaselineOfG11YOrchestrator >> declareGroups: spec [
 	spec
 		group: 'default'
 			with:
-			#('GY-Domain');
-		group: 'tests' with: #('GY-Domain-Tests');
+			#('G11Y-Domain');
+		group: 'tests' with: #('G11Y-Domain-Tests');
 		group: 'development' with: #('default' 'tests');
 		group: 'full' with: #('development' 'Roassal2' 'GToolkit').
 	^ spec
@@ -60,8 +60,8 @@ BaselineOfG11YOrchestrator >> declareNeoJSONIn: spec [
 { #category : #packages }
 BaselineOfG11YOrchestrator >> declarePackages: spec [
 	spec
-		package: #'GY-Domain';
-		package: #'GY-Domain-Tests' with: [ spec requires: #('GY-Domain') ].
+		package: #'G11Y-Domain';
+		package: #'G11Y-Domain-Tests' with: [ spec requires: #('G11Y-Domain') ].
 	^ spec
 ]
 
