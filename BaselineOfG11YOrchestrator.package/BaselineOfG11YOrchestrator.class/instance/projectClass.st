@@ -1,0 +1,3 @@
+overridden
+projectClass
+	^ MetacelloCypressBaselineProject
