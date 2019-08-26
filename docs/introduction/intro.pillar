@@ -1,0 +1,33 @@
+! Generativity Orchestrator
+
+Generativity is a set of tools designed to better manage how we build software.
+
+The Orchestrator component acts as the central piece that controls the very act of building software.
+
+! Building software
+
+To build a software system, one has to specify the desired behavior of the system. In most cases, that means writing code.
+The traditional approach pays all attention to the resulting code. We deal with questions such as "Is it simple?" "Does it behave correctly?" "Can it be optimized?" "How would it behave if...?".
+Then, a great deal of effort is invested in finding ways to make software simpler, correct, efficient, and reliable.
+When building software, we usually classify requirements in two categories: functional, and non-functional. The former define what the system is expected to do, including fixing errors. The latter are related to how the system behaves and aspects related to its maintenance over time.
+
+!! Software simplicity
+
+Software complexity is widely perceived as the main cause of problems in a software system.
+The process of building software consists of, in essence, specifying what a computer should do in a certain context. That specification might not be simple to understand.
+Additionally, most software evolves. A new feature, or a bug fix, can alter the behavior of the system in unexpected ways. Over time, the tendency is to make the system harder to understand.
+That's why simplicity has become the main issue to focus on. Unfortunately, it seems the battle is lost, sooner or later.
+
+!! Software correctness
+
+Software enables us to use computers to perform certain tasks for us. The way we describe those tasks can be wrong, or omit certain situations. For historical reasons, we call those errors "bugs".
+When building software, we need to make our code as correct as possible. But making it correct can potentially make it less simple, though. In those cases, correctness wins.
+
+!! Software efficiency
+
+For the system to be useful, it should be fast enough. This requirement might also oppose simplicity. In those cases, performance usually wins.
+
+!! Software reliability
+
+If the system we build stops working correctly or misbehaves after a while, we say it's unreliable. Reliability is a characteristic we need to address when building software. In practice, with appropiate monitoring it's less important than the other aspects, since we can replace a misbehaving system with a new one.
+

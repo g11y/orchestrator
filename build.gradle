@@ -6,7 +6,7 @@ String release = 'latest'
 apply plugin: PharoPlugin
 
 pharo {
-    imageVersion = '80'
+    imageVersion = '70'
 }
 
 def imageName = "${project.name}-${project.version}"
