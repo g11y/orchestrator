@@ -1,0 +1,258 @@
+#+DESCRIPTION: A different approach for building software
+#+AUTHOR: Jose San Leandro Armendáriz
+#+DATE: 2019/08/31
+#+EMAIL: rydnr@acm-sl.org
+#+LANGUAGE: en
+#+TITLE: Generativity
+#+EXPORT_FILE_NAME: intro
+#+OPTIONS: *:t
+#+OPTIONS: author:t
+#+OPTIONS: creator:nil
+#+OPTIONS: email:nil
+#+OPTIONS: toc:t
+#+OPTIONS: H:2
+#+OPTIONS: \n:nil
+#+LATEX_HEADER: \usepackage{indentfirst}
+* Building software
+
+  To build a software system, one has to specify the desired behavior of the
+  system. In most cases, that means writing code.
+  The traditional approach pays all attention to the resulting code. We deal
+  with questions such as "Is it simple?" "Does it behave correctly?" "Can it be
+  optimized?" "How would it behave if...?".
+  Then, a great deal of effort is invested in finding ways to make software
+  simpler, correct, efficient, and reliable.
+  When building software, we usually classify requirements in two categories:
+  functional, and non-functional. The former define what the system is expected
+  to do, including fixing errors. The latter are related to how the system
+  behaves and aspects related to its maintenance over time.
+
+** Software simplicity
+
+   Software complexity is widely perceived as the main cause of problems in a
+   software system.
+   The process of building software consists of, in essence, specifying what a
+   computer should do in a certain context. That specification might not be
+   simple to understand.
+   Additionally, most software evolves. A new feature, or a bug fix, can alter
+   the behavior of the system in unexpected ways. Over time, the tendency is to
+   make the system harder to understand.
+   That's why simplicity has become the main issue to focus on. Unfortunately,
+   it seems the battle is lost, sooner or later.
+
+** Software correctness
+
+   Software enables us to use computers to perform certain tasks for us. The way
+   we describe those tasks can be wrong or omit certain situations. For
+   historical reasons, we call those errors "bugs".
+   When building software, we need to make our code as correct as possible. But
+   making it correct can potentially make it less simple, though. In those
+   cases, correctness wins.
+
+** Software efficiency
+
+   For the system to be useful, it should be fast enough. This requirement might
+   also oppose simplicity. In those cases, performance usually wins.
+
+** Software reliability
+
+   If the system we build stops working correctly or misbehaves after a while,
+   we say it's unreliable. Reliability is a characteristic we need to address
+   when building software. In practice, with appropriate monitoring, it's less
+   important than the other aspects, since we can replace a misbehaving system
+   with a new one.
+
+* The nature of software
+
+  We've just described some properties of software. But, what is software? The
+  answer depends on the point of view.
+
+** Software as a low-level translation of abstract models
+
+   When a software system is running, it usually consists of pieces which know
+   only those other parts of the system they absolutely need to perform their
+   job. In other words, systems are usually just a collection of parts.
+   A logical question could be: should we model the system as an entity with
+   behavior? In fact, that's how users tend to think of software, and that
+   ultimately drives the way software evolves.
+   An obvious approach would be to define a state machine that resembles such
+   behavior. Is that enough? Aren't we really using software to describe the
+   behavior of an abstract model? If so, shouldn't we focus on the abstract
+   concepts involved instead?
+   This approach assumes the process of building software should be just
+   translating abstract concepts to code. That translation process should
+   preserve the simplicity of the abstract model.
+   To help us, Domain-Driven Design (DDD) gives some recommendations.
+   The bottom line is the assumption that software is just a way to materialize
+   a system, but whose behavior can be modeled as an abstract entity. Designing
+   abstract models should be enough to define how a system behaves. Writing code
+   is a suboptimal way to build a system. If the model doesn't describe
+   completely the system's behavior, it should. If the code does something
+   different as what is defined in the model, it shouldn't.
+   This approach assumes software is not a relevant subject to study, just a way
+   to execute model descriptions.
+
+   I call this "The far-sightedness approach". It's more interested in reasoning
+   about the abstract concepts being modeled than the resulting code. This
+   doesn't mean it doesn't care about how the model is translated into code.
+
+** Software as a list of requirements
+
+   The previous approach aims to find or build abstract models from a
+   (potentially) incomplete list of requirements. Another approach is less
+   ambitious, and more pragmatic, and is happy with working with the
+   concreteness of each one of the requirements. It pays no attention to the
+   system as a whole, but how it responds to the defined use cases.
+
+   This approach doesn't pay much attention to what software is about, just
+   cares about what it does.
+
+   I call this "The short-sightedness approach", not because it denies the
+   importance of proper design, but because it pays more attention to the code
+   than what motivated the code in the first place.
+
+** Software as covering other software
+
+   This approach is more focused on how to build software by composing other software pieces.
+   It rewards software that evolves frequently and denies stale software. It
+   cares about version numbers, the number of contributors, and the reputation
+   of its users.
+   The attention is shifted towards which technologies to use. The requirements
+   of the system are used to classify existing products and technologies, so the
+   cover on top of them is simpler, thinner, or faster to write.
+   The building blocks, be them commercial or open-source, products, libraries,
+   cloud technologies, or even languages, are forced to compete among
+   themselves. To succeed, they need to be attractive to developers. On the
+   other hand, developers need to be fluent on mainstream technologies to remain
+   employable. Conferences play a role too. They show the strength of the
+   product, to attract more developers. Developers, on the other hand, want to
+   be sure they are not part of a decaying community. And that closes the
+   circle.
+   In practice, some developers tend to think "simplicity" is equivalent to
+   "write less code" and "leave all complexity to the product underneath". They
+   coin the term "lazy" as a positive attitude when building software. Their
+   main skill is choosing the right language, or specializing in the most
+   convenient technology. They gain experience in developing the right intuition
+   towards products. In doing so, they maximize their probabilities of getting
+   higher salaries while avoiding the complexities inherent to building
+   software: that is the responsibility of the underlying language or product.
+   If it doesn't live up to the expectations, it risks losing developers.
+
+   I call this "The software marketplace approach".
+
+** Software as materials
+
+   Carlo Pescio and others are researching in the field of software from the
+   perspective of studying the properties of software in three different
+   dimensions: Decision space, Run-time space, and Artifact space.
+   Regarding software, he advocates to do less speculation and more observation,
+   to improve the accuracy and usefulness of the statements we claim about
+   software systems. We need then to identify "properties" as reactions to
+   Forces (resembling those in physics, such as compression, tension, bending,
+   torsion, shear, etc.), and think of software as materials to be shaped.
+   The Run-time space analyzes the runtime behavior, and cares about properties such as partition tolerance, immutability, scalability, etc. The forces in this space evolve as technology evolves.
+   The Artifact space focuses on the source code itself, and analyzes the
+   reusability and readability of the source code.
+   Last, the Decision space deals with identifying the decisions taken when
+   building the software. Those decisions were influenced by technical criteria,
+   or maybe they were a consecuence of the methodology in place. The functional
+   requirements are part of this space as well.
+
+   In a way, this vision of software is an extension of the short-sighted approach. I'll call it as Pescio does: "The physics of Software".
+
+** Software as a process
+
+   To illustrate this approach, let's step back for a moment. Software is
+   ultimately numbers interpreted by specialized devices. We found out that we
+   could write those numbers by thinking solely on the operations and data they
+   mean to the hardware devices. We found a way to produce the same numbers
+   using meaningful instructions. We learned how to define functions and wrote
+   algorithms. It didn't stop there.
+   First with procedural languages, and later with functional languages and
+   object-oriented languages, we were able to improve the process of writing and
+   thinking of software. In order to improve the desirable properties of
+   software systems, we are in a quest of recipes of what we should and
+   shouldn't do. As Hillel Wayne explains in his "What we know we don't know"
+   talk [1] in GOTO 2019 conference, research doesn't back us up regarding our
+   "best practices" or recipes. They might be right, or not. We don't know. Yet,
+   we criticize others if they choose different practices from the ones adopted
+   by the majority.
+
+   If a software system misbehaves and the code does not follow certain
+   practices, we tend to think it was a logical consequence of choosing the
+   wrong language or the wrong practices. Or at least, partly caused by them.
+   However, if the software system misbehaves and the code uses mainstream
+   practices, the problem must be elsewhere, not in our practices.
+
+   This approach focuses on the process itself of writing software. It depends
+   on people, experience and taste. It's also affected by how the process is
+   organized as well as the methodologies used.
+   An experience developer would teach an apprentice a number of ways to respond
+   in certain scenarios. Another developer might choose different approaches, so
+   the apprentice would end up learning a different way to perform as developer.
+
+   This approach reduces software as the outcome of developing software, so
+   instead of focusing on the result, this approach is more interested on the
+   craft itself.
+
+   In this view, software is just a by-product of the profession of software
+   developer. We'll focus on this vision from now on.
+
+* The profession of building software
+
+  A typical day of a professional software developer include tasks such as
+  reading source code, merging code from one branch to another in the version
+  control system, diagnosing and fixing a bug, discussing pros and cons of
+  certain approaches with other team members, or writing code. Not all days are
+  the same, but what is usually common is the need to care about how much time
+  is left until the next deadline. It affects everything. 
+
+  In Generativity, we are concerned about two types of tasks: writing code, and
+  using version control systems.
+
+** Writing code
+
+   Believe it or not, most software developers like to start by cloning
+   something that exists already, and modify it. There might be several reasons
+   for it, depending on the context. One obvious reason is efficiency: copying a
+   file and removing the unneeded parts is faster than writing the common parts
+   by hand. When learning using examples, it's safer to try out a slight
+   modification in a new file, to avoiding the risk of breaking the original
+   example, and play with one simple change at a time.
+
+   Maybe we would always like to start by changing something we trust, if we had
+   the choice. Maybe we just need templates we can trust.
+
+   That's the approach we follow with Generativity. We aim to provide a different
+   way to work, in which we don't write source code. We customize templates.
+   The decision of which template to use belongs to a different scope than the
+   process of building the very template.
+
+   By separating those scopes, we can address interesting questions. For example,
+   when inspecting a template, one might ask: What is this template appropiate for?
+   What parameters does it expect? Is it trustworthy in terms of security? How does
+   it behave at runtime? Can I use it for real-time applications? Where I could
+   find answers to those questions?
+
+** Using version control systems
+
+   Version control systems are useful to create landmarks in the evolution of the
+   software, so we can come back to them anytime. Additionally, those landmarks can
+   have specific semantics. They're used to indicate whether the software has been
+   tested or not, whether it's stable, whether it's deployed and being used by the
+   target audience, etc.
+
+   In Generativity, we are interested in a seamless integration of version control
+   systems so they are responsible of managing decisions made in the development
+   process. We use them specifically to address the issues from Pescio's Decision
+   Space. When did we choose to take this path? Why? What motivated this decision?
+
+
+* Generativity Orchestrator
+
+  Generativity is a set of tools designed to better manage how we build software.
+
+  The Orchestrator component acts as the central piece that controls the very act of building software.
+
+
+  [1] https://www.youtube.com/watch?time_continue=895&v=WELBnE33dpY
